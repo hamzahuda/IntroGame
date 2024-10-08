@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using TMPro;
-using TMPro.Examples;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,11 +8,11 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     private int count;
     private int numPickups = 5;
+    private Vector3 previousPos;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI winText;
     public TextMeshProUGUI playerPositionText;
     public TextMeshProUGUI playerVelocityText;
-    public TextMeshProUGUI distanceToClosestPickupText;
 
 
 
@@ -25,20 +21,22 @@ public class PlayerController : MonoBehaviour {
         count = 0;
         winText.text = "";
         SetCountText();
+        previousPos = transform.position;
     }
 
     void OnMove(InputValue value) {
         moveValue = value.Get<Vector2>();
     }
 
-    void Update()
-    {
-        playerVelocityText.text = "Velocity: " + GetComponent<Rigidbody>().velocity.magnitude;
+    void Update() {
+    
         playerPositionText.text = "Position: " + transform.position.ToString();
     }
 
     void FixedUpdate()
     {
+        playerVelocityText.text = "Velocity: " + ((transform.position - previousPos).magnitude / Time.fixedDeltaTime).ToString("0.00");
+        previousPos = transform.position;
         Vector3 movement = new Vector3(moveValue.x, 0.0f, moveValue.y);
         GetComponent<Rigidbody>().AddForce(movement * speed * Time.fixedDeltaTime);
     }
