@@ -14,6 +14,11 @@ public class PlayerController : MonoBehaviour {
     private int numPickups = 5;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI winText;
+    public TextMeshProUGUI playerPositionText;
+    public TextMeshProUGUI playerVelocityText;
+    public TextMeshProUGUI distanceToClosestPickupText;
+
+
 
     void Start()
     {
@@ -25,10 +30,16 @@ public class PlayerController : MonoBehaviour {
     void OnMove(InputValue value) {
         moveValue = value.Get<Vector2>();
     }
+
+    void Update()
+    {
+        playerVelocityText.text = "Velocity: " + GetComponent<Rigidbody>().velocity.magnitude;
+        playerPositionText.text = "Position: " + transform.position.ToString();
+    }
+
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(moveValue.x, 0.0f, moveValue.y);
-
         GetComponent<Rigidbody>().AddForce(movement * speed * Time.fixedDeltaTime);
     }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2668062484111611940}
   - component: {fileID: 8082052487895828447}
   - component: {fileID: 6838550662963810200}
+  - component: {fileID: 1951600980445152249}
   m_Layer: 0
   m_Name: PickUp
   m_TagString: PickUp
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1951600980445152249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3890160586809420654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb66a2ffe3e5d647bfc535e7a5144ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
